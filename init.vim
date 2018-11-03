@@ -10,14 +10,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'zchee/deoplete-jedi'
+  "Plug 'zchee/deoplete-clang'
+  Plug 'Shougo/neoinclude.vim'
+  Plug 'Shougo/deoplete-clangx'
 else
   Plug 'Shougo/deoplete.nvim'
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
+  Plug 'zchee/deoplete-jedi'
+  Plug 'zchee/deoplete-clang'
+  Plug 'Shougo/neoinclude.vim'
 endif
 let g:deoplete#enable_at_startup = 1
-Plug 'zchee/deoplete-jedi'
-Plug 'zchee/deoplete-clang'
 
 
 Plug 'rakr/vim-one'
@@ -98,7 +103,11 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
 
 " Clang
-" let g:ncm2_pyclang#library_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/'
+" let g:deoplete#sources#clang#libclang_path='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/libclang.dylib'
+" let g:deoplete#sources#clang#clang_header='/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang'
+
+" deoplete settings
+set completeopt-=preview
 
 " Lightline config:
 let g:lightline = {'colorscheme':'jellybeans'}
