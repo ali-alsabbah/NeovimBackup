@@ -108,16 +108,19 @@ let g:ctrlp_working_path_mode = 0
 
 " deoplete settings
 set completeopt-=preview
+set completeopt+=noinsert
+let g:neoinclude#paths = {'cpp': '/usr/local/include'}
+call neoinclude#include#get_current_include_files()
+" let g:neoinclude#paths.c = '/usr/local/include'
 
 " Lightline config:
-let g:lightline = {'colorscheme':'jellybeans'}
+let g:lightline = {'colorscheme': 'jellybeans'}
 set noshowmode
 
 set colorcolumn=79
 
 set clipboard=unnamed
 
-set background=light
 colorscheme japanesque
 
 " Makefile
