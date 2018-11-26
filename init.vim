@@ -1,3 +1,4 @@
+" empty comment
 " auto-install vim-plug and plugins
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -11,7 +12,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   Plug 'zchee/deoplete-jedi'
-  "Plug 'zchee/deoplete-clang'
   Plug 'Shougo/neoinclude.vim'
   Plug 'Shougo/deoplete-clangx'
 else
@@ -19,8 +19,9 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'zchee/deoplete-jedi'
-  Plug 'zchee/deoplete-clang'
   Plug 'Shougo/neoinclude.vim'
+  Plug 'Shougo/deoplete-clangx'
+
 endif
 let g:deoplete#enable_at_startup = 1
 
@@ -86,6 +87,8 @@ Plug 'skreek/skeletor.vim'
 Plug 'phanviet/Sidonia'
 Plug 'KimNorgaard/vim-frign'
 Plug 'szorfein/fromthehell.vim'
+Plug 'marcelbeumer/spacedust.vim'
+Plug 'altercation/vim-colors-solarized'
 
 
 
@@ -109,23 +112,26 @@ let g:ctrlp_working_path_mode = 0
 " deoplete settings
 set completeopt-=preview
 set completeopt+=noinsert
-let g:neoinclude#paths = {'cpp': '/usr/local/include'}
+let g:neoinclude#paths = {'cpp': '/usr/local/include/c++/8.2.0'}
 call neoinclude#include#get_current_include_files()
 " let g:neoinclude#paths.c = '/usr/local/include'
 
 " Lightline config:
-let g:lightline = {'colorscheme': 'jellybeans'}
+let g:lightline = {'colorscheme': 'seoul256'}
 set noshowmode
 
 set colorcolumn=79
 
 set clipboard=unnamed
 
-colorscheme japanesque
+colorscheme badwolf
+
+" save last position in file
+autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Makefile
-autocmd Filetype c setlocal makeprg=cc\ \ %
-autocmd Filetype cpp setlocal makeprg=c++\ \ %
+autocmd Filetype c setlocal makeprg=gcc-8\ \ %
+autocmd Filetype cpp setlocal makeprg=g++-8\ \ %
 
 " run Python file
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
