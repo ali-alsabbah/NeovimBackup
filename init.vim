@@ -37,12 +37,6 @@ Plug 'Yggdroot/indentline'
 " ultisnip dependencies
 Plug 'SirVer/ultisnips'
 
-" snipmate dependencies
-Plug 'tomtom/tlib_vim'
-Plug 'marcweber/vim-addon-mw-utils'
-Plug 'garbas/vim-snipmate'
-
-
 " color schemes
 Plug 'phanviet/Sidonia'
 Plug 'kaicataldo/material.vim'
@@ -89,6 +83,7 @@ Plug 'KimNorgaard/vim-frign'
 Plug 'szorfein/fromthehell.vim'
 Plug 'marcelbeumer/spacedust.vim'
 Plug 'altercation/vim-colors-solarized'
+Plug 'NLKNguyen/papercolor-theme'
 
 
 
@@ -112,7 +107,7 @@ let g:ctrlp_working_path_mode = 0
 " deoplete settings
 set completeopt-=preview
 set completeopt+=noinsert
-let g:neoinclude#paths = {'cpp': '/usr/local/include/c++/8.2.0'}
+let g:neoinclude#paths = {'cpp': '/usr/local/include/c++/8.2.0', 'c': '/usr/local/include/'}
 call neoinclude#include#get_current_include_files()
 " let g:neoinclude#paths.c = '/usr/local/include'
 
@@ -124,7 +119,8 @@ set colorcolumn=79
 
 set clipboard=unnamed
 
-colorscheme badwolf
+set background=light
+colorscheme PaperColor
 
 " save last position in file
 autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
@@ -135,3 +131,6 @@ autocmd Filetype cpp setlocal makeprg=g++-8\ \ %
 
 " run Python file
 autocmd FileType python nnoremap <buffer> <F5> :exec '!python3' shellescape(@%, 1)<cr>
+
+" Neovim virtualenv
+let g:python3_host_prog = '/Users/alialsabbah1/.virtualenvs/neovim/bin/python'
